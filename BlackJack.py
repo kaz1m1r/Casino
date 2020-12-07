@@ -40,16 +40,16 @@ class Blackjack:
     def player_hit(self):
         for player in self.list_of_players:
             print(f"Player {player.id} : {player.name} has :")
+            self.calculate_value_of_hand(player)
             while True:
                 for card in player.hand:
                     print(f"{card.value} of {card.suit}")
-                self.calculate_value_of_hand(player)
                 print(f"Value of {player.name}'s hand is {player.value_of_hand}")
                 if player.value_of_hand < 21:
                     choice = input("\nHit or pass?('h' or 'p') : ")
                     if choice == 'h':
-                        print(f"Another card was dealt to {player.name}")
                         player.add_card_to_hand(self.dealer.get_upper_card_from_deck())
+                        print(f"Another card was dealt to {player.name}")
                         self.calculate_value_of_hand(player)
                     else:
                         print(f"Value of {player.name}'s hand : {player.value_of_hand}")
