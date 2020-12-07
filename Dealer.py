@@ -7,6 +7,10 @@ class Dealer:
     def __init__(self):
         self.deck = Deck()
         self.shuffle_deck()
+        self.cards_of_dealer = []
+
+    def add_card_to_hand(self, card):
+        self.cards_of_dealer.append(card)
 
     def get_upper_card(self):
         card = self.deck.all_cards[-1]
