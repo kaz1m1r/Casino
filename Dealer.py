@@ -7,10 +7,21 @@ class Dealer:
     def __init__(self):
         self.deck = Deck()
         self.shuffle_deck()
+        self.hand = []
+        self.value_of_hand = 0
 
-    def get_upper_card(self):
+    def get_hand(self):
+        return self.hand
+
+    def get_first_card_from_hand(self):
+        print(f"{self.hand[0].value} of {self.hand[0].suit}")
+
+    def add_card_to_hand(self, card):
+        self.hand.append(card)
+
+    def get_upper_card_from_deck(self):
         card = self.deck.all_cards[-1]
-        self.deck.all_cards.pop(card)
+        self.deck.all_cards.pop(len(self.deck.all_cards) - 1)
         return card
 
     def shuffle_deck(self):

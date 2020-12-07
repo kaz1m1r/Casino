@@ -7,5 +7,5 @@ class Deck:
         self.all_cards = []
 
         for suit in ["Hearts", "Clovers", "Diamonds", "Spades"]:
-            for value in [str(value) for value in range(2, 11)] + ["Jack", "Queen", "King", "Acd"]:
+            for value in [str(value) for value in range(2, 11)] + ["Jack", "Queen", "King", "Ace"]:
                 self.all_cards.append(Card(value, suit))
