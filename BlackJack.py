@@ -1,6 +1,7 @@
 from Player import Player
 from Dealer import Dealer
 from time import sleep
+import os
 
 
 class Blackjack:
@@ -150,15 +151,19 @@ class Blackjack:
 
     def welcome_message(self):
         """
-        Neat welcome message
+        Nice welcome message for Black Jack
+        :return: None
         """
-        print("WELCOME TO\n")
-        print("___.   .__                 __          __               __")
-        print("\_ |__ |  | _____    ____ |  | __     |__|____    ____ |  | __")
-        print(" | __ \|  | \__  \ _/ ___\|  |/ /     |  \__  \ _/ ___\|  |/ /")
-        print(" | \_\ \  |__/ __ \\  \___|     <      |  |/ __ \\  \___ |    <")
-        print(" |___  /____(____  /\___  >__|_ \ /\__|  (____  /\___  >__|_ \\")
-        print("     \/          \/     \/     \/ \______|    \/     \/     \/")
-        print("\n")
 
+        absoluteFilePath = os.path.abspath(__file__)
+        absoluteFolderPath = os.path.dirname(absoluteFilePath)
+        blackjack_banner_path = os.path.join(absoluteFolderPath, "blackjack_banner.txt")
+        banner = open(blackjack_banner_path, "r")
 
+        print("WELCOME TO \n")
+        for line in banner:
+            print(line.strip("\n"))
+        banner.close()
+        print("\n"
+              "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+              "\n")
