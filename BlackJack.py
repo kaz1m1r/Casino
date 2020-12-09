@@ -155,6 +155,8 @@ class Blackjack:
         :return: None
         """
 
+        # constructing absolute file path to 'blackjack_banner.txt' from absolute paths
+
         absoluteFilePath = os.path.abspath(__file__)
         absoluteFolderPath = os.path.dirname(absoluteFilePath)
         blackjack_banner_path = os.path.join(absoluteFolderPath, "blackjack_banner.txt")
