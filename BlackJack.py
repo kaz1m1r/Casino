@@ -1,15 +1,15 @@
-from Player import Player
 from Dealer import Dealer
 from time import sleep
-import os
+from Game import Game
 
 
-class Blackjack:
+class Blackjack(Game):
 
-    def __init__(self):
+    def __init__(self, blackjack_banner):
+        Game.__init__(self, blackjack_banner)
+        self.welcome_message(blackjack_banner)
+
         self.dealer = Dealer()
-        self.list_of_players = []
-        self.welcome_message()
         self.add_players()  # make player instances
         self.participants_two_cards()   # get every participant two cards
         self.play()
@@ -131,41 +131,3 @@ class Blackjack:
             self.dealer.add_card_to_hand(self.dealer.get_upper_card_from_deck())
 
         print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\n")
-
-    def add_players(self):
-        """
-        Creating player objects
-        """
-        while True:
-            try:
-                amount_of_players = int(input("Enter amount of players : "))
-                break
-            except ValueError:
-                print("Enter an integer (whole number such as 2, 3 etc) : ")
-        list_of_names = []
-        for player in range(amount_of_players):
-            list_of_names.append(input(f"Name of Player {player + 1} : "))
-        for name in range(len(list_of_names)):
-            self.list_of_players.append(Player(list_of_names[name], name + 1))
-
-
-    def welcome_message(self):
-        """
-        Nice welcome message for Black Jack
-        :return: None
-        """
-
-        # constructing absolute file path to 'blackjack_banner.txt' from absolute paths
-
-        absoluteFilePath = os.path.abspath(__file__)
-        absoluteFolderPath = os.path.dirname(absoluteFilePath)
-        blackjack_banner_path = os.path.join(absoluteFolderPath, "blackjack_banner.txt")
-        banner = open(blackjack_banner_path, "r")
-
-        print("WELCOME TO \n")
-        for line in banner:
-            print(line.strip("\n"))
-        banner.close()
-        print("\n"
-              "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-              "\n")
