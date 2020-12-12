@@ -4,6 +4,7 @@ class Player:
         self.name = name
         self.id = player_id
         self.hand = []
+        self.money = float(1000)
         self.value_of_hand = 0
 
     def add_card_to_hand(self, card):

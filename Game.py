@@ -3,9 +3,28 @@ from Player import Player
 
 class Game:
 
-    def __init__(self, banner_text_file_string):
+    def __init__(self, banner_text_file_string, board_txt_file=None):
         self.list_of_players = []
         self.banner = banner_text_file_string
+        self.board = board_txt_file
+        self.pot = 0  # sum of all bets from all players in this current round
+
+    def display_board(self, board_txt_file):
+        """
+        Display board nicely
+        :param board_txt_file:
+        :return: None
+        """
+
+        # making banner's absolute path using relative paths
+
+        runtime_file_path = os.path.abspath(__file__)
+        runtime_file_folder = os.path.dirname(runtime_file_path)
+        banner_file_path = os.path.join(runtime_file_folder, board_txt_file)
+        print("\nBOARD THAT YOU'LL BE USING:\n")
+        banner = open(banner_file_path, "r")
+        for line in banner:
+            print(line.strip("\n"))
 
     def add_players(self):
         """
