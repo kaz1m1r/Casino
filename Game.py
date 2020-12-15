@@ -5,11 +5,12 @@ class Game:
 
     def __init__(self, banner_text_file_string, board_txt_file=None):
         self.list_of_players = []
-        self.banner = banner_text_file_string
-        self.board = board_txt_file
+        self.banner = "banners/"+banner_text_file_string
+        if board_txt_file != None:
+            self.board = "playing_boards/"+board_txt_file
         self.pot = 0  # sum of all bets from all players in this current round
 
-    def display_board(self, board_txt_file):
+    def display_board(self):
         """
         Display board nicely
         :param board_txt_file:
@@ -20,7 +21,7 @@ class Game:
 
         runtime_file_path = os.path.abspath(__file__)
         runtime_file_folder = os.path.dirname(runtime_file_path)
-        banner_file_path = os.path.join(runtime_file_folder, board_txt_file)
+        banner_file_path = os.path.join(runtime_file_folder, self.board)
         print("\nBOARD THAT YOU'LL BE USING:\n")
         banner = open(banner_file_path, "r")
         for line in banner:
@@ -43,7 +44,7 @@ class Game:
         for name in range(len(list_of_names)):
             self.list_of_players.append(Player(list_of_names[name], name + 1))
 
-    def welcome_message(self, banner_text_file):
+    def welcome_message(self):
         """
         Nice welcome message
         :param banner_text_file:
@@ -53,8 +54,11 @@ class Game:
         # creating absolute path to 'banner_text_file' with relative paths
 
         runtime_file_path = os.path.abspath(__file__)
+        print(runtime_file_path)
         runtime_file_folder = os.path.dirname(runtime_file_path)
-        banner_file_path = os.path.join(runtime_file_folder, banner_text_file)
+        print(runtime_file_folder)
+        banner_file_path = os.path.join(runtime_file_folder, self.banner)
+        print(f"Banner path = {banner_file_path}")
 
         print("WELCOME TO:")
         banner = open(banner_file_path, "r")
