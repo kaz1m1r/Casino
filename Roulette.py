@@ -37,9 +37,8 @@ class Roulette(Game):
         Calculating the winnings of a specific person. These winnings can be negative which
         indicates a loss of money
         :param board:
-        :param landed_value: Landed value object
         :param player: Player object
-        :return: float
+        :return: None
         """
         winnings_dictionary_multiplier = {
             0: 2,
@@ -70,7 +69,6 @@ class Roulette(Game):
 
         player.money += winnings
         print(f"Player {player.id} {player.name} won {winnings} dollars !!!")
-        print()
 
     def roll_ball(self):
         """
