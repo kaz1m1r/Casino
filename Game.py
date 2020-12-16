@@ -1,5 +1,7 @@
 import os
 from Player import Player
+import sys
+from termcolor import colored, cprint
 
 class Game:
 
@@ -54,17 +56,14 @@ class Game:
         # creating absolute path to 'banner_text_file' with relative paths
 
         runtime_file_path = os.path.abspath(__file__)
-        print(runtime_file_path)
         runtime_file_folder = os.path.dirname(runtime_file_path)
-        print(runtime_file_folder)
         banner_file_path = os.path.join(runtime_file_folder, self.banner)
-        print(f"Banner path = {banner_file_path}")
 
-        print("WELCOME TO:")
+        cprint("WELCOME TO:", 'red', attrs=['bold'])
         banner = open(banner_file_path, "r")
         for line in banner:
-            print(line.strip("\n"))
-        print(30 * "~")
+            cprint(line.strip("\n"), 'yellow', attrs=['bold'])
+        cprint(30 * "~", 'magenta', attrs=['bold'])
 
 
 
