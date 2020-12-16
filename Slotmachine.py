@@ -23,6 +23,12 @@ class RowOfSquares:
 class Slotmachine(Game):
 
     def __init__(self, slotmachine_banner):
+
         Game.__init__(self, slotmachine_banner)
         self.welcome_message()
+        self.add_players()
+
+        self.selected_squares = []
+        self.square_colors = ['grey', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white']
+
 
