@@ -1,6 +1,8 @@
 from Game import Game
 from termcolor import colored
 import time
+import os
+import keyboard
 
 
 class Square:
@@ -33,18 +35,23 @@ class Slotmachine(Game):
 
         self.selected_squares = []
         self.square_colors = ['grey', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white']
-        self.roll()
+        print(self.roll())
 
     def roll(self):
         """
         Simulating rolling
-        :return: None
+        :return: string
         """
+
+        #  lambda function for clearing the screen
+        clear = lambda: os.system('cls' if os.name == 'nt' else 'clear')
 
         while True:
             for color in self.square_colors:
                 self.print_square(color)
                 time.sleep(0.05)
+                #  os.system('cls' if os.name == 'nt' else 'clear')
+                clear()
 
     def print_square(self, color):
         """
